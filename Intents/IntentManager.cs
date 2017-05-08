@@ -102,7 +102,7 @@ namespace Intents
                             ((UserIntent)sessionIntent).execute();
                         }
                     }
-                    this._intentRepository.Add(intent.getStorageKey(), new List<UserIntent>());
+                    //this._intentRepository.Add(intent.getStorageKey(), new List<UserIntent>());
                 }
             });
             return this;

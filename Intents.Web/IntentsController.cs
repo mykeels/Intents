@@ -36,7 +36,15 @@ namespace Intents.Web
                     {
                         var intents = IntentManager.GetIntentManager().GetUserIntentData(trigger);
                         IntentManager.GetIntentManager().Trigger(trigger);
-                        return Json(Models.Response<dynamic>.Success(intents), JsonRequestBehavior.AllowGet);
+                        return Json(Models.Response<dynamic>.Success(intents.Select(intent =>
+                        {
+                            return new
+                            {
+                                name = intent.name,
+                                trigger = intent.trigger,
+                                action = intent.action.ToString() //because we can't serialize entire Actions (methods), nor should we attempt to
+                            };
+                        })), JsonRequestBehavior.AllowGet);
                     }
                     else return Json(Models.Response.GetDefaultErrorMessage("Invalid Trigger: Trigger not found"), JsonRequestBehavior.AllowGet);
                 }

@@ -66,7 +66,7 @@ namespace Intents
 
         public string getStorageKey()
         {
-            return $"vc-intent-{this.trigger}-{this.name}";
+            return $"intent-{this.trigger}-{this.name}";
         }
     }
 }
