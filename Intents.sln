@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intents", "Intents\Intents.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intents.Web", "Intents.Web\Intents.Web.csproj", "{9056E422-FCF5-409F-A019-4D0AEEBA5937}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intents.Mvc", "Intents.Mvc\Intents.Mvc.csproj", "{37F7F174-9C28-4A54-ACEF-43C6586C217B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intents.Mvc.Tests", "Intents.Mvc.Tests\Intents.Mvc.Tests.csproj", "{3BAC4255-A50F-4DA4-89D4-F803678F9E0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{9056E422-FCF5-409F-A019-4D0AEEBA5937}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9056E422-FCF5-409F-A019-4D0AEEBA5937}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9056E422-FCF5-409F-A019-4D0AEEBA5937}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37F7F174-9C28-4A54-ACEF-43C6586C217B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F7F174-9C28-4A54-ACEF-43C6586C217B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F7F174-9C28-4A54-ACEF-43C6586C217B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F7F174-9C28-4A54-ACEF-43C6586C217B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BAC4255-A50F-4DA4-89D4-F803678F9E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BAC4255-A50F-4DA4-89D4-F803678F9E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BAC4255-A50F-4DA4-89D4-F803678F9E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BAC4255-A50F-4DA4-89D4-F803678F9E0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -43,6 +43,7 @@
     <Compile Include="Intent-TData.cs" />
     <Compile Include="Intent.cs" />
     <Compile Include="Interfaces\IntentContract.cs" />
+    <Compile Include="Models\Response.cs" />
     <Compile Include="UserIntent-TData.cs" />
     <Compile Include="UserIntent.cs" />
     <Compile Include="IntentManager.cs" />
