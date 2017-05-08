@@ -3,7 +3,7 @@
 namespace Intents
 {
     [Serializable]
-    public class IntentData : Intent
+    public class UserIntent : Intent
     {
         public new Action<dynamic> action { get; set; }
         public dynamic data { get; set; }
@@ -14,9 +14,9 @@ namespace Intents
             //else if (base.action != null) base.action.Invoke(data);
         }
 
-        public new IntentData<TData> getIntent<TData>()
+        public new UserIntent<TData> getIntent<TData>()
         {
-            IntentData<TData> intent = new IntentData<TData>();
+            UserIntent<TData> intent = new UserIntent<TData>();
             intent.trigger = this.trigger;
             intent.name = this.name;
             intent.action = (data) => this.action((TData)data);

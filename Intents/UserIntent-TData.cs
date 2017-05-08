@@ -3,12 +3,12 @@
 namespace Intents
 {
     [Serializable]
-    public class IntentData<TData> : Intent<TData>
+    public class UserIntent<TData> : Intent<TData>
     {
         public new Action<TData> action { get; set; }
         public TData data { get; set; }
 
-        public IntentData()
+        public UserIntent()
         {
 
         }
@@ -19,9 +19,9 @@ namespace Intents
         }
 
 
-        public new IntentData getIntent()
+        public new UserIntent getIntent()
         {
-            IntentData intent = new IntentData();
+            UserIntent intent = new UserIntent();
             intent.type = this.GetType();
             if (this.action == null)
                 this.action = IntentManager.GetIntentManager().GetIntent<TData>(this.trigger, this.name).action;

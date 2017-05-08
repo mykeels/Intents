@@ -43,7 +43,7 @@ namespace Intents
             this._intents?.ForEach(_intent =>
             {
                 if (this._intentRepository.IsReady() && !this._intentRepository.Exists(_intent.getStorageKey()))
-                    this._intentRepository.Add(_intent.getStorageKey(), new List<IntentData>());
+                    this._intentRepository.Add(_intent.getStorageKey(), new List<UserIntent>());
             });
             return this;
         }
@@ -69,14 +69,14 @@ namespace Intents
             return this._intents.Where(intent => String.IsNullOrEmpty(trigger) || String.Equals(intent.trigger, trigger, StringComparison.CurrentCultureIgnoreCase));
         }
 
-        public IntentManager AddIntentData<TData>(IntentData<TData> _intentData)
+        public IntentManager AddIntentData<TData>(UserIntent<TData> _intentData)
         {
             if (_intentData.isValid())
             {
                 if (!this._intentRepository.Exists(_intentData.getStorageKey())) throw new Exception($"Intent with key [{_intentData.getStorageKey()}] not registered");
                 var intentCategory = this.GetIntents(_intentData.trigger).FirstOrDefault(intent => intent.name.ToLower() == _intentData.name.ToLower());
                 intentCategory.beforeAddIntent();
-                var sessionIntents = this._intentRepository.Get<List<IntentData>>(_intentData.getStorageKey());
+                var sessionIntents = this._intentRepository.Get<List<UserIntent>>(_intentData.getStorageKey());
                 sessionIntents.Add(_intentData.getIntent());
                 intentCategory.afterAddIntent();
             }
@@ -85,7 +85,7 @@ namespace Intents
 
         public IntentManager AddIntentData<TData>(string trigger, string name, TData data)
         {
-            return this.AddIntentData(new IntentData<TData>() { data = data, name = name, trigger = trigger });
+            return this.AddIntentData(new UserIntent<TData>() { data = data, name = name, trigger = trigger });
         }
 
         public IntentManager Trigger(string trigger)
@@ -94,33 +94,33 @@ namespace Intents
             {
                 if (this._intentRepository.IsReady())
                 {
-                    var sessionIntents = (List<IntentData>)this._intentRepository.Get<List<IntentData>>(intent.getStorageKey());
+                    var sessionIntents = (List<UserIntent>)this._intentRepository.Get<List<UserIntent>>(intent.getStorageKey());
                     if (sessionIntents != null)
                     {
                         foreach (var sessionIntent in sessionIntents)
                         {
-                            ((IntentData)sessionIntent).execute();
+                            ((UserIntent)sessionIntent).execute();
                         }
                     }
-                    this._intentRepository.Add(intent.getStorageKey(), new List<IntentData>());
+                    this._intentRepository.Add(intent.getStorageKey(), new List<UserIntent>());
                 }
             });
             return this;
         }
 
-        public IEnumerable<IntentData> GetUserIntentData(string trigger = null)
+        public IEnumerable<UserIntent> GetUserIntentData(string trigger = null)
         {
             foreach (var intent in this.GetIntents(trigger).ToList())
             {
-                var sessionIntents = this._intentRepository.Get<List<IntentData>>(intent.getStorageKey());
+                var sessionIntents = this._intentRepository.Get<List<UserIntent>>(intent.getStorageKey());
                 if (sessionIntents != null)
                 {
                     foreach (var sessionIntent in sessionIntents)
                     {
-                        yield return ((IntentData)sessionIntent);
+                        yield return ((UserIntent)sessionIntent);
                     }
                 }
-                else this._intentRepository.Add(intent.getStorageKey(), new List<IntentData>());
+                else this._intentRepository.Add(intent.getStorageKey(), new List<UserIntent>());
             }
         }
 
@@ -131,7 +131,7 @@ namespace Intents
             {
                 foreach (var intent in intents)
                 {
-                    this._intentRepository.Add(intent.getStorageKey(), new List<IntentData>());
+                    this._intentRepository.Add(intent.getStorageKey(), new List<UserIntent>());
                 }
             }
         }
