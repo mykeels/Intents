@@ -6,6 +6,10 @@ If you build a web application with these kind of problems, you'd run into probl
 
 That's what Intents helps you do.
 
+## Target Environment
+
+.NET Framework 4.5.2 (can be upgraded to support 4.6)
+
 ## How it works
 
 - Intents are actions that are subscribed to, and executed only when triggered.
