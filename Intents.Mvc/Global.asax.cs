@@ -22,7 +22,7 @@ namespace Intents.Mvc
             {
                 name = "page-request",
                 trigger = "page-request",
-                action = (data) =>
+                action = (string data) =>
                 {
                     Console.WriteLine("New Page Request");
                 }
@@ -36,7 +36,7 @@ namespace Intents.Mvc
 
         protected void Application_BeginRequest()
         {
-            IntentManager.GetIntentManager().Trigger("login");
+            IntentManager.GetIntentManager().Trigger("page-request");
         }
     }
 }
